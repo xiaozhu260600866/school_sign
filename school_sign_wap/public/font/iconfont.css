@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'iconfont';  /* Project id 680922 */
+  src: url('//at.alicdn.com/t/font_680922_p4nt9cbu6no.woff2?t=1625540023135') format('woff2'),
+       url('//at.alicdn.com/t/font_680922_p4nt9cbu6no.woff?t=1625540023135') format('woff'),
+       url('//at.alicdn.com/t/font_680922_p4nt9cbu6no.ttf?t=1625540023135') format('truetype');
+}
+/* 3314024140@qq.com  dx3229010 */
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-float-msg:before{content: "\e6ae";}/* 咨询 */
+.icon-float-user:before{content: "\e6b5";}/* 咨询 */
+
+
+
+.icon-:before{content: "\e";}/*  */

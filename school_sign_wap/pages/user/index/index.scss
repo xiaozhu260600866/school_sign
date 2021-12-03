@@ -1,0 +1,18 @@
+/* 头部 */
+.head-info{
+	width: 100%;padding: 80rpx 40rpx;display: flex;align-items: center;position: relative;background: url(../../../static/mine-bg.png) no-repeat left top;background-size: 100% 100%;
+	.utop{
+		width: 100%;
+		.uinfo{
+			display: flex;align-items: center;position: relative;
+			.header-img{margin-right: 30rpx;
+				.img{width: 120rpx;height: 120rpx;border-radius: 50%;border: 4rpx #fff solid;display: flex;}
+			}
+			.login-nav{background-color: rgba(0,0,0,0.25);border-radius: 30rpx;}
+		}
+	}
+}
+
+.group-lists{
+	::v-deep .num{width: 36rpx;height: 36rpx;border-radius: 50%;background-color: $color-red;font-size: 20rpx;color: $color-white;display: flex;justify-content: center;align-items: center;}
+}
