@@ -1,21 +1,21 @@
 <template>
 	<view class="pin-lists">
 		<view class="pin-item block-sec" v-for="item in data">
-			<myform :ruleform="ruleform" :vaildate="vaildate" :append="true" :data="item" @callBack="goto('/pages/activity/show',1)">
+			<myform :ruleform="ruleform" :vaildate="vaildate" :append="true" :data="item" @callBack="goto('/pages/activity/show?id='+item.id,1)">
 				<view slot="content">
 					<view class="img">
-						<image class="image" :src="item.cover" mode="aspectFill"></image>
-						<view class="sold" v-if="item.sold>0">{{ item.sold }}人已报名</view>
+						<image class="image" :src="item.firstCover" mode="aspectFill"></image>
+						<view class="sold" v-if="item.orderNum>0">{{ item.orderNum }}人已报名</view>
 					</view>
 					<view class="info p15">
-						<view class="title wrap2 fs-16 lh-1_6">{{ item.name }}</view>
+						<view class="title wrap2 fs-16 lh-1_6">{{ item.title }}</view>
 						<view class="flex-end mt10">
 							<view class="flex1 flex-baseline Arial lh-1 fs-14">
 								<text class="price">￥<text class="fs-24">{{item.price}}</text></text>
 								<text class="original">￥{{ item.new_price }}</text>
 							</view>
 							<!-- <view class="todetail">立即报名</view> -->
-							<dx-button type="primary" size="medium" round>立即报名</dx-button>
+							<dx-button type="primary" size="medium" round >立即报名</dx-button>
 						</view>
 					</view>
 				</view>

@@ -1,11 +1,11 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
-			<block v-if="detail.payed_at">
+		<view v-if="data.show">
+			<block v-if="data.detail.payed_at">
 				<dx-results txt="支付成功" @click="goto('/pages/index/index',2)"></dx-results>
 			</block>
-			<block v-if="!detail.payed_at">
+			<block v-if="!data.detail.payed_at">
 				<dx-results txt="支付失败" :success="false"  @click="goto('/pages/index/index',2)"></dx-results>
 			</block>
 		</view>
@@ -18,7 +18,7 @@
 		components:{dxResults},
 		data() {
 			return {
-				formAction: '/shop/order/payed',
+				formAction: '/activity/order/detail',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				detail:{
@@ -38,7 +38,7 @@
 			this.shareSource(this, '商城');
 		},
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
 			

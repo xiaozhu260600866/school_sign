@@ -2,16 +2,16 @@
 	<view class="order_pro" :class="[myclass]">
 		<view class="order_row" v-for="(item,key) in data">
 			<view class="opro_img">
-				<image class="img" :src="item.getProduct.firstCover" mode="aspectFill" />
+				<image class="img" :src="item.firstCover" mode="aspectFill" />
 			</view>
 			<view class="opro_info">
 				<view class="Titem">
 					<view class="left">
-						<view class="name wrap3">{{item.getProduct.name}}</view>
+						<view class="name wrap3">{{item.title}}</view>
 					</view>
 					<view class="right">
-						<view class="price">￥{{toFixed(item.amount / item.num ) }}</view>
-						<view class="num">x {{item.num}}</view>
+						<view class="price">{{item.price}}</view>
+						<view class="num">x 1</view>
 					</view>
 				</view>
 			</view>

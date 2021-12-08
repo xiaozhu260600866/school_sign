@@ -1,8 +1,8 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view>
-			<activity-lists :data="activityLists"></activity-lists>
+		<view v-if="data.show">
+			<activity-lists :data="data.lists.data"></activity-lists>
 		</view>
 	</view>
 </template>
@@ -13,7 +13,7 @@
 		components: {activityLists},
 		data() {
 			return {
-				formAction: '/shop/wapindex',
+				formAction: '/activity/lists',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -30,11 +30,21 @@
 		},
 		
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
+			onShow(){
+				this.onShow(this);
+			},
+			onPullDownRefresh() {
+				this.data.nextPage = 1;
+				this.ajax();
+			},
 			checkAuth(v){
 				return this.goto(v.url,v.type);
+			},
+			onShareAppMessage() {
+				this.shareSource(this, '活动');
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {

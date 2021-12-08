@@ -9,7 +9,7 @@ uni.login({
 	success: function(res) {
 		console.log(JSON.stringify(res));
 		if (res.code && !res.authResult) {
-			let url = uni.getStorageSync('siteName') + '/getOpenOpenId?site_name=' + uni.getStorageSync('site_name') +
+			let url = uni.getStorageSync('siteName') + '/openid?site_name=' + uni.getStorageSync('site_name') +
 				'&code=' + res.code;
 			uni.request({
 				url: url,

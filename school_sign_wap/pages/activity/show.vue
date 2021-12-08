@@ -1,27 +1,24 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="pb60">
+		<view class="pb60" v-if="data.show">
 			<view class="banner">
-				<dxSwiper :data="[
-					{cover:'/static/pic.jpg'},
-					{cover:'/static/pic.jpg'}
-				]" :tbPadding="0" :lrPadding="0" :bdR="0"></dxSwiper>
+				<myswiper :lists="data.cover"  purl="activity"></myswiper>
 			</view>
 			<view class="activity_info p15 bg-f">
-				<view class="name fs-18">{{detail.name}}</view>
+				<view class="name fs-18">{{data.detail.title}}</view>
 				<view class="price_group flex-between flex-end lh-1 fs-14 mt20">
 					<view class="left flex-baseline">
-						<view class="price">￥<text class="fs-30">{{detail.price}}</text></view>
-						<view class="cprice pl10">￥{{detail.new_price}}</view>
+						<view class="price">￥<text class="fs-30">{{data.detail.price}}</text></view>
+						<view class="cprice pl10">￥{{data.detail.new_price}}</view>
 					</view>
-					<view class="right fs-16 fc-6"><text class="Arial">{{detail.sold}}</text>人已报名</view>
+					<view class="right fs-16 fc-6"><text class="Arial">{{data.detail.orderNum}}</text>人已报名</view>
 				</view>
 			</view>
 			<view class="activity_show mt10 bg-f">
 				<dx-title name="活动详情" borderColor="#F60" :borderWidth="60" :borderR="4" nameColor="#333" :nameSize="17" nameBold="bold" Bline></dx-title>
 				<view class="content">
-					<u-parse :content="detail.content" v-if="detail.content" />
+					<u-parse :content="data.detail.content" v-if="data.detail.content" />
 				</view>
 			</view>
 			<view id="show_footer">
@@ -35,9 +32,14 @@
 						<view class="txt">分享</view>
 					</button>
 				</view>
-				<view class="right flex1 w-b100 pr5">
+				<view class="right flex1 w-b100 pr5" v-if="data.detail.maxNum > data.detail.orderNum  ">
 					<view class="r-nav">
 						<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="toBuy" myclass="r-item r-item-red" title="立即下单"></myform>
+					</view>
+				</view>
+				<view class="right flex1 w-b100 pr5" v-else>
+					<view class="r-nav">
+						 <!-- 这里设置人数超出的按钮 -->
 					</view>
 				</view>
 			</view>
@@ -52,7 +54,7 @@
 		components:{dxTitle,uParse},
 		data() {
 			return {
-				formAction: '/shop/user/bing',
+				formAction: '/activity/show',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -69,11 +71,11 @@
 		},
 		
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
 			toBuy() {
-				return this.goto('/pages/order/buy',1);
+				return this.goto('/pages/order/buy?id='+this.data.detail.id,1);
 			},
 			ajax() {
 				this.getAjax(this).then(msg => {

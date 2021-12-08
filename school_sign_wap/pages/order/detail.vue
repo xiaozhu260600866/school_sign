@@ -1,33 +1,30 @@
 <template>
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
-		<view class="pb30">
-			<view class="order-status pt20 pb80 text-center main-bg">
+		<view class="pb30" v-if="data.show">
+			<!-- <view class="order-status pt20 pb80 text-center main-bg">
 				<view class="fs-20 fc-white">{{ orderData.status }}</view>
 				<view class="fs-14 mt5 fc-e">核销时请打开此页面给我们工作人员进行核销</view>
-			</view>
+			</view> -->
 			<view class="coupon-item">
-				<orderActivity :data="detail.activity"></orderActivity>
+				<orderActivity :data="[data.detail.getActivity]"></orderActivity>
 				<dx-list-cell nameColor="#777" name="姓名">
-					<view slot="right">{{ orderData.name }}</view>
+					<view slot="right">{{ data.detail.name }}</view>
 				</dx-list-cell>
 				<dx-list-cell nameColor="#777" name="身份证">
-					<view slot="right">{{ orderData.cardID }}</view>
+					<view slot="right">{{ data.detail.idCard }}</view>
 				</dx-list-cell>
 				<dx-list-cell nameColor="#777" name="联系电话">
-					<view slot="right">{{ orderData.phone }}</view>
+					<view slot="right">{{ data.detail.phone }}</view>
 				</dx-list-cell>
 				<dx-list-cell nameColor="#777" name="所在学校/机构">
-					<view slot="right">{{ orderData.organization }}</view>
+					<view slot="right">{{ data.detail.organization }}</view>
 				</dx-list-cell>
 				<dx-list-cell nameColor="#777" name="活动日期">
-					<view slot="right">{{ orderData.time }}</view>
+					<view slot="right">{{ data.detail.time }}</view>
 				</dx-list-cell>
 				<dx-list-cell nameColor="#777" name="支付时间">
-					<view slot="right">{{ orderData.payed_at }}</view>
-				</dx-list-cell>
-				<dx-list-cell nameColor="#777" name="核销时间" v-if="orderData.status==9">
-					<view slot="right">{{ orderData.writeoff_at }}</view>
+					<view slot="right">{{ data.detail.payed_at }}</view>
 				</dx-list-cell>
 			</view>
 		</view>
@@ -41,7 +38,7 @@
 		components:{orderActivity,dxListCell},
 		data() {
 			return {
-				formAction: '/shop/user/bing',
+				formAction: '/activity/order/detail',
 				mpType: 'page', //用来分清父和子组件
 				data: this.formatData(this),
 				getSiteName: this.getSiteName(),
@@ -67,7 +64,7 @@
 		},
 		
 		onLoad(options) {
-			//this.ajax();
+			this.ajax();
 		},
 		methods: {
 			

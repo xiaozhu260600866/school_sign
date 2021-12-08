@@ -1,7 +1,8 @@
 <template>
-	<rich-text :nodes="nodes"></rich-text>
+	<div class='tablebox'>
+		<rich-text :nodes="nodes" :class="node.classStr" :style="'user-select:' + parseSelect"></rich-text>
+	</div>
 </template>
-
 <script>
 export default {
 	name: 'wxParseTable',
@@ -13,6 +14,7 @@ export default {
 			},
 		},
 	},
+	inject: ['parseSelect'],
 	data() {
 		return {
 			nodes:[]
@@ -25,7 +27,6 @@ export default {
 		loadNode(node) {
 			let obj = [];
 			for (let children of node) {
-				// console.log(children)
 				if (children.node=='element') {
 					let t = {
 						name:children.tag,
@@ -49,3 +50,6 @@ export default {
 	}
 };
 </script>
+<style>
+	@import url("../parse.css");
+</style>

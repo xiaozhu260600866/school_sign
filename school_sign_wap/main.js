@@ -81,12 +81,13 @@ Vue.use(myfun2);
 Vue.use(date);
 Vue.use(filter);
 Vue.use(vaildate);
+Vue.use(message);
 
 
 import 'provider.js';
 
 
-uni.setStorageSync('siteName', 'https://boss.doxinsoft.com');
+uni.setStorageSync('siteName', 'https://school-sign.doxinsoft.com');
 
 uni.removeStorageSync('jsdk');
 uni.removeStorageSync('distribution');
