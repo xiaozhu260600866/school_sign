@@ -39,7 +39,7 @@
 				</view>
 				<view class="right flex1 w-b100 pr5" v-else>
 					<view class="r-nav">
-						 <!-- 这里设置人数超出的按钮 -->
+						<view class="r-item r-item-default">报名人数已满</view>
 					</view>
 				</view>
 			</view>
@@ -70,6 +70,16 @@
 			}
 		},
 		
+		onReachBottom() {
+			this.hasMore(this);
+		},
+		onPullDownRefresh() {
+			this.data.nextPage = 1;
+			this.ajax();
+		},
+		onShareAppMessage() {
+			return this.shareSource(this, this.data.detail.title);
+		},
 		onLoad(options) {
 			this.ajax();
 		},

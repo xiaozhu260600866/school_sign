@@ -2,16 +2,15 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
-			<view class="head-info main-bg" style="background: url(../../../static/mine-bg.png) no-repeat left top;background-size: 100% 100%;">
+			<view class="head-info main-bg" :style="'background-image: url('+getSiteName+'/images/wap/mine-bg.png)'">
 				<view class="utop fc-white">
 					<view class="uinfo" v-if="!data.user.nickname || data.user.nickname == '游客'">
 						<view class="header-img">
-							<!-- <image class="img" :src="getSiteName+'/images/nouser01.png'"> -->
-							<image class="img" src="/static/C01.png">
+							<image class="img" :src="getSiteName+'/images/nouser01.png'">
 						</view>
 						<myform :ruleform="ruleform" :vaildate="vaildate" :append="true" :data="v" @callBack="ajax">
 							<view slot="content">
-								<view class="login-nav pl20 pr15 lh-28 fs-14 bdr14">立即登录<span class="iconfont icon-right fs-10 pl3"></span></view>
+								<view class="login-nav fc-white pl20 pr15 lh-28 fs-14 bdr14">立即登录<span class="iconfont icon-right fs-10 pl3"></span></view>
 							</view>
 						</myform>
 					</view>

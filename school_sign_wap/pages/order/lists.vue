@@ -2,29 +2,28 @@
 	<view>
 		<page :parentData="data" :formAction="formAction"></page>
 		<view v-if="data.show">
-			<view>
-				<view class="order_lists">
-					<view class="order_item block-sec" v-for="parent in data.lists.data">
-						<view class="order_t ">
-							<view class="left">
-								<view class="p">订单编号：<text class="Arial">{{parent.order_no}}</text></view>
-								<view class="p">下单日期：<text class="Arial">{{parent.payed_at}}</text></view>
-							</view>
-							<view class="right main-color">已支付</view>
+			<view class="order_lists">
+				<view class="order_item block-sec" v-for="parent in data.lists.data">
+					<view class="order_t ">
+						<view class="left">
+							<view class="p">订单编号：<text class="Arial">{{parent.order_no}}</text></view>
+							<view class="p">下单日期：<text class="Arial">{{parent.payed_at}}</text></view>
 						</view>
-						<orderLists :data="[parent.getActivity]"></orderLists>
-						<view class="order_count">共<text class="Arial plr3">1</text>件商品
-							合计：￥<text class="Arial fs-16 fc-red">{{ parent.amount}}</text>
-						</view>
-						<view class="btn-group">
-							<!-- 待支付 取消订单&去支付-->
-							<view class="btn-item">
-								<view class="btn-nav obtn" @click="goto('/pages/order/detail?order_no='+parent.order_no,1)">订单详情</view>
-							</view>
+						<view class="right main-color">已支付</view>
+					</view>
+					<orderLists :data="[parent.getActivity]"></orderLists>
+					<view class="order_count">共<text class="Arial plr3">1</text>件商品
+						合计：￥<text class="Arial fs-16 fc-red">{{ parent.amount}}</text>
+					</view>
+					<view class="btn-group">
+						<!-- 待支付 取消订单&去支付-->
+						<view class="btn-item">
+							<view class="btn-nav obtn" @click="goto('/pages/order/detail?order_no='+parent.order_no,1)">订单详情</view>
 						</view>
 					</view>
 				</view>
 			</view>
+			<hasMore :parentData="data" source="nodata"></hasMore>
 		</view>
 	</view>
 </template>

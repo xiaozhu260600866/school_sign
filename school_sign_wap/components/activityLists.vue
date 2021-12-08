@@ -4,7 +4,7 @@
 			<myform :ruleform="ruleform" :vaildate="vaildate" :append="true" :data="item" @callBack="goto('/pages/activity/show?id='+item.id,1)">
 				<view slot="content">
 					<view class="img">
-						<image class="image" :src="item.firstCover" mode="aspectFill"></image>
+						<image class="image" :src="item.firstCover" mode="widthFix"></image>
 						<view class="sold" v-if="item.orderNum>0">{{ item.orderNum }}人已报名</view>
 					</view>
 					<view class="info p15">

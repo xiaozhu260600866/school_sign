@@ -1,5 +1,5 @@
 {
-    "name" : "一天游",
+    "name" : "活动报名",
     "appid" : "__UNI__B73D34F",
     "description" : "",
     "versionName" : "1.0.0",
@@ -64,7 +64,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wxb24cb0bc044bedea",
+        "appid" : "wxa00b89c2ab44d6d6",
         "setting" : {
             "urlCheck" : true
         },
