@@ -7,7 +7,7 @@
 						<image class="image" :src="item.firstCover" mode="widthFix"></image>
 						<view class="sold" v-if="item.orderNum>0">{{ item.orderNum }}人已报名</view>
 					</view>
-					<view class="info p15">
+					<view class="info p15 pt10">
 						<view class="title wrap2 fs-16 lh-1_6">{{ item.title }}</view>
 						<view class="flex-end mt10">
 							<view class="flex1 flex-baseline Arial lh-1 fs-14">
@@ -15,7 +15,7 @@
 								<text class="original">￥{{ item.new_price }}</text>
 							</view>
 							<!-- <view class="todetail">立即报名</view> -->
-							<dx-button type="primary" size="medium" round >立即报名</dx-button>
+							<dx-button :type="due==true?'info':'primary'" size="medium" round :disabled="due==true?true:false">{{due==true?'活动已到期':'立即报名'}}</dx-button>
 						</view>
 					</view>
 				</view>
@@ -36,7 +36,7 @@
 		}
 	}
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .pin-lists{
 	.pin-item{
 		position: relative;overflow: hidden;
@@ -49,6 +49,7 @@
 		.title{text-align: justify;}
 		.original{color: #999;text-decoration: line-through;padding-left: 10rpx;}
 		.todetail{background: $color-primary;height: 80rpx;line-height: 80rpx;border-radius: 40rpx;padding: 0 40rpx;color: #fff;}
+		
 	}
 }
 </style>

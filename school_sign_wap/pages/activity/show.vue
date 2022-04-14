@@ -16,8 +16,8 @@
 				</view>
 			</view>
 			<view class="activity_show mt10 bg-f">
-				<dx-title name="活动详情" borderColor="#F60" :borderWidth="60" :borderR="4" nameColor="#333" :nameSize="17" nameBold="bold" Bline></dx-title>
-				<view class="content">
+				<dx-title name="活动详情" borderColor="#F60" :borderWidth="60" :borderR="4" nameColor="#333" :nameSize="17" nameBold="bold" Bline line></dx-title>
+				<view class="content mt10">
 					<u-parse :content="data.detail.content" v-if="data.detail.content" />
 				</view>
 			</view>
@@ -40,6 +40,11 @@
 				<view class="right flex1 w-b100 pr5" v-else>
 					<view class="r-nav">
 						<view class="r-item r-item-default">报名人数已满</view>
+					</view>
+				</view>
+				<view class="right flex1 w-b100 pr5" v-if="due == true">
+					<view class="r-nav">
+						<view class="r-item r-item-default">活动已到期</view>
 					</view>
 				</view>
 			</view>

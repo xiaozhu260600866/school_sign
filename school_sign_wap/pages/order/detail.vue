@@ -8,17 +8,20 @@
 			</view> -->
 			<view class="coupon-item">
 				<orderActivity :data="[data.detail.getActivity]"></orderActivity>
-				<dx-list-cell nameColor="#777" name="姓名">
+				<dx-list-cell nameColor="#777" name="孩子姓名">
 					<view slot="right">{{ data.detail.name }}</view>
 				</dx-list-cell>
-				<dx-list-cell nameColor="#777" name="身份证">
-					<view slot="right">{{ data.detail.idCard }}</view>
+				<dx-list-cell nameColor="#777" name="孩子年龄">
+					<view slot="right">{{ data.detail.age }}</view>
 				</dx-list-cell>
-				<dx-list-cell nameColor="#777" name="联系电话">
-					<view slot="right">{{ data.detail.phone }}</view>
-				</dx-list-cell>
-				<dx-list-cell nameColor="#777" name="所在学校/机构">
+				<dx-list-cell nameColor="#777" name="孩子所属学校">
 					<view slot="right">{{ data.detail.organization }}</view>
+				</dx-list-cell>
+				<dx-list-cell nameColor="#777" name="家长姓名">
+					<view slot="right">{{ data.detail.parents }}</view>
+				</dx-list-cell>
+				<dx-list-cell nameColor="#777" name="家长联系电话">
+					<view slot="right">{{ data.detail.phone }}</view>
 				</dx-list-cell>
 				<dx-list-cell nameColor="#777" name="活动日期">
 					<view slot="right">{{ data.detail.time }}</view>

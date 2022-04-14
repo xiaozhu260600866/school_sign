@@ -4,22 +4,26 @@
 		<view class="pb70" v-if="data.show">
 			<view class="buy_activity flex p15 bg-f">
 				<view class="cover pr15">
-					<image class="img bdr4" :src="data.detail.firstCover"></image>
+					<image class="img bdr4" :src="data.detail.firstCover" mode="aspectFill"></image>
 				</view>
 				<view class="info flex1 flex-d-column flex-between">
 					<view class="name wrap3">{{data.detail.title}}</view>
 					<view class="num flex-between lh-1 flex-end Arial fs-14">
-						<view class="price">￥<text class="fs-17">{{data.detail.price}}</text></view>
-						<view class="num fc-6">x 1</view>
+						<view class="price">￥<text class="fs-20">{{data.detail.price}}</text></view>
+						<!-- <view class="num fc-6">x 1</view> -->
 					</view>
 				</view>
 			</view>
 			<view class="buy_wirte block-sec">
-				<weui-input v-model="ruleform.name" label="姓名" type="text" name="name" datatype="require"></weui-input>
-				<weui-input v-model="ruleform.idCard" label="身份证号码" type="text" name="idCard" datatype="require"></weui-input>
-				<weui-input v-model="ruleform.phone" label="联系电话" type="number" name="phone" datatype="require"></weui-input>
-				<weui-input v-model="ruleform.organization" label="所在学校/机构" type="text" name="organization"></weui-input>
-				<weui-input v-model="ruleform.time" label="活动日期" name="time" changeField="value" datatype="require" type="select" dataKey="timeArr" left></weui-input>
+				<weui-input v-model="ruleform.name" label="孩子姓名" type="text" name="name" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.age" label="孩子年龄" type="number" name="age" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.organization" label="孩子所属学校" type="text" name="organization"></weui-input>
+				<weui-input v-model="ruleform.parents" label="家长姓名" type="text" name="parents" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.phone" label="家长联系电话" type="number" name="phone" datatype="require"></weui-input>
+				<weui-input v-model="ruleform.time" label="活动日期" name="time" changeField="value" datatype="require" type="select" dataKey="timeArr"
+				 left></weui-input>
+				<!-- <weui-input v-model="ruleform.idCard" label="身份证号码" type="text" name="idCard" datatype="require"></weui-input>
+				 -->
 			</view>
 			
 			<view id="calculation" class="block-sec">

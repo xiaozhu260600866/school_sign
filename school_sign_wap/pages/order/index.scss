@@ -5,6 +5,12 @@
 	}
 }
 
+.buy_wirte{
+	::v-deep .dx-cell{
+		.dx-label{width: 200rpx!important;}
+	}
+}
+
 /* 计算与优惠信息 */
 #calculation{
 	padding: 20rpx 0;
