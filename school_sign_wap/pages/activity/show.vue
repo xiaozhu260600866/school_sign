@@ -32,19 +32,22 @@
 						<view class="txt">分享</view>
 					</button>
 				</view>
-				<view class="right flex1 w-b100 pr5" v-if="data.detail.maxNum > data.detail.orderNum  ">
-					<view class="r-nav">
-						<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="toBuy" myclass="r-item r-item-red" title="立即下单"></myform>
+				<view v-if="!data.detail.isExpire" class="right flex1 w-b100 pr5">
+					<view  v-if="data.detail.maxNum > data.detail.orderNum  " class="w-b100">
+						<view class="r-nav">
+							<myform :ruleform="ruleform" :vaildate="vaildate" @callBack="toBuy" myclass="r-item r-item-red" title="立即下单"></myform>
+						</view>
+					</view>
+					<view  v-else>
+						<view class="r-nav">
+							<view class="r-item r-item-default">报名人数已满</view>
+						</view>
 					</view>
 				</view>
-				<view class="right flex1 w-b100 pr5" v-else>
+				
+				<view class="right flex1 w-b100 pr5" v-if="data.detail.isExpire">
 					<view class="r-nav">
-						<view class="r-item r-item-default">报名人数已满</view>
-					</view>
-				</view>
-				<view class="right flex1 w-b100 pr5" v-if="due == true">
-					<view class="r-nav">
-						<view class="r-item r-item-default">活动已到期</view>
+						<view class="r-item r-item-default">活动已到期或未开始</view>
 					</view>
 				</view>
 			</view>
